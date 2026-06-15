@@ -54,12 +54,10 @@ AWS Cloud
 
 ## STEP 1: Install Required Tools on Mac
 
-'''
 terraform -version
 docker --version
 brew install awscli
 aws --version
-'''
 
 <img width="814" height="506" alt="Screenshot 2026-06-14 at 5 11 26 PM" src="https://github.com/user-attachments/assets/c0e45ea8-1865-47b9-9a79-2a90af9baf05" />
 
@@ -67,125 +65,101 @@ aws --version
 
 ## STEP 2: Configure AWS
 
-'''
 aws configure
-'''
 
 <img width="815" height="260" alt="Screenshot 2026-06-14 at 5 11 43 PM 1" src="https://github.com/user-attachments/assets/62fc90f0-2f1f-412f-83aa-24b0b0199f83" />
 
 ## STEP 3: Create Project Structure
 
-''' 
 mkdir ecommerce-devops
 cd ecommerce-devops
 mkdir frontend user-service products-service orders-service cart-service terraform
-'''
 
 <img width="820" height="253" alt="Screenshot 2026-06-14 at 5 11 55 PM" src="https://github.com/user-attachments/assets/5b227e1d-dfc5-40f1-b4af-8571c55d0810" />
 
 ## STEP 4: Create Backend Services
-''' 
+
 cd user-service
 npm install
-'''
 
 <img width="818" height="295" alt="Screenshot 2026-06-14 at 5 11 56 PM" src="https://github.com/user-attachments/assets/874fca5b-ed85-4478-bb81-0b9c90245e1a" />
 
-''' 
 cd ../products-service
 npm install
-'''
 
 <img width="818" height="212" alt="Screenshot 2026-06-14 at 5 11 57 PM" src="https://github.com/user-attachments/assets/2e2d743c-1134-44b3-906c-a1fd4a391786" />
 
-'''
 cd ../orders-service
 npm install
-'''
 
 <img width="816" height="226" alt="Screenshot 2026-06-14 at 5 12 01 PM" src="https://github.com/user-attachments/assets/72b88739-b5bd-4b0d-87fa-8101b90aec0e" />
 
-'''
 cd ../cart-service
 npm install
-'''
 
 <img width="815" height="212" alt="Screenshot 2026-06-14 at 5 12 07 PM" src="https://github.com/user-attachments/assets/33ee0655-1719-4060-bd8c-8b7dfd2d7808" />
 
-''' node server.js '''
+node server.js 
 
 <img width="818" height="172" alt="Screenshot 2026-06-14 at 5 12 07 PM 1" src="https://github.com/user-attachments/assets/4001a09a-ef9e-4ef0-820b-747c7cecbeeb" />
 
 <img width="818" height="182" alt="Screenshot 2026-06-14 at 5 12 18 PM" src="https://github.com/user-attachments/assets/0d0c179b-ca64-4b5c-937d-a7cce2350693" />
 
-''' 
 cd ~/ecommerce-devops/frontend
 npm install
 node server.js
-'''
 
 <img width="816" height="268" alt="Screenshot 2026-06-14 at 5 12 19 PM" src="https://github.com/user-attachments/assets/cc65c7ac-8860-4927-9abe-f32ac844e5ba" />
 
-'''
+
 curl http://localhost:3001
 curl http://localhost:3002
 curl http://localhost:3003
 curl http://localhost:3004
 curl http://localhost:3000
-'''
 
 <img width="511" height="211" alt="Screenshot 2026-06-14 at 4 26 15 PM" src="https://github.com/user-attachments/assets/8fcb9041-9d5f-41eb-b5af-413dcde16262" />
 
 ## STEP 6: Build Images
-'''
+
 cd ~/ecommerce-devops/user-service
 docker build -t user-service .
 docker run -p 3001:3001 user-service
-'''
 
 <img width="816" height="425" alt="Screenshot 2026-06-15 at 1 16 47 AM" src="https://github.com/user-attachments/assets/88507953-d70f-40b8-8ba8-3e2a732e4d00" />
 
-'''
 cd ~/ecommerce-devops/products-service
 docker build -t products-service .
 docker run -p 3002:3002 products-service
-'''
 
 <img width="706" height="421" alt="Screenshot 2026-06-15 at 1 17 31 AM" src="https://github.com/user-attachments/assets/e103a64d-2da3-4a0c-ab96-5754af037768" />
 
-'''
 cd ~/ecommerce-devops/orders-service
 docker build -t orders-service .
 docker run -p 3003:3003 orders-service
-'''
 
 <img width="770" height="422" alt="Screenshot 2026-06-15 at 1 17 53 AM" src="https://github.com/user-attachments/assets/dd273ee3-0708-44b8-a9d2-b7978849e5f0" />
 
-'''
 cd ~/ecommerce-devops/cart-service
 docker build -t cart-service .
 docker run -p 3004:3004 cart-service
-'''
 
 <img width="740" height="426" alt="Screenshot 2026-06-16 at 1 15 31 AM" src="https://github.com/user-attachments/assets/5f494ef0-c69c-47d7-b703-d3c26792f05d" />
 
-'''
 cd ~/ecommerce-devops/frontend
 docker build -t frontend .
 docker run -p 3000:3000 frontend
-'''
 
 <img width="676" height="437" alt="Screenshot 2026-06-16 at 1 25 49 AM" src="https://github.com/user-attachments/assets/d3b33ea7-15e5-4ec0-b7ce-866927c4ff5f" />
 
-''' docker ps '''
+docker ps 
 
 <img width="1006" height="189" alt="Screenshot 2026-06-16 at 1 10 10 AM" src="https://github.com/user-attachments/assets/b02ab152-660f-45b3-add3-95b14fc28946" />
 
 ## STEP 7: Push Images to DockerHub
-''' 
+
 docker login
 docker images
-'''
 
 <img width="998" height="211" alt="Screenshot 2026-06-16 at 1 11 14 AM" src="https://github.com/user-attachments/assets/71e70878-d760-4a10-b77c-bb1318a8d939" />
 
@@ -194,33 +168,23 @@ docker images
 ### Docker Images
 
 DockerHub Repository:
-'''
 docker push rahulkumarprajapati/user-service:v1
-'''
 
 <img width="1612" height="482" alt="image" src="https://github.com/user-attachments/assets/29573e35-8c8b-4980-93de-24b6a7b00377" />
 
-'''
 docker push rahulkumarprajapati/products-service:v1
-'''
 
 <img width="1612" height="486" alt="image" src="https://github.com/user-attachments/assets/bff86ba4-1d8d-4d67-8d2d-2dff94ddf187" />
 
-'''
 docker push rahulkumarprajapati/orders-service:v1
-'''
 
 <img width="1606" height="476" alt="image" src="https://github.com/user-attachments/assets/e33f230e-1191-48bd-931e-ad21c815ddf7" />
 
-'''
 docker push rahulkumarprajapati/cart-service:v1
-'''
 
 <img width="1614" height="484" alt="image" src="https://github.com/user-attachments/assets/a47076d3-0663-4b3f-accc-a33f5e48a686" />
 
-'''
 docker push rahulkumarprajapati/frontend:v1
-'''
 
 <img width="1620" height="486" alt="image" src="https://github.com/user-attachments/assets/10ccfe33-d373-4c0d-93e2-74ffd15c6aae" />
 
@@ -229,10 +193,8 @@ docker push rahulkumarprajapati/frontend:v1
 <img width="1131" height="536" alt="Screenshot 2026-06-16 at 1 45 36 AM" src="https://github.com/user-attachments/assets/1f07c43d-2e37-4f9a-87ee-fa18e90a1ac7" />
 
 ## STEP 8: Terraform Folder
-'''
 cd ~/ecommerce-devops/terraform
 touch provider.tf main.tf variables.tf outputs.tf
-'''
 
 <img width="799" height="116" alt="Screenshot 2026-06-15 at 6 50 16 PM" src="https://github.com/user-attachments/assets/0497c436-7c2b-45aa-ae94-2b8e67fe7cef" />
 
@@ -248,25 +210,17 @@ terraform/
 
 ## Step 9: Deploy Infrastructure
 
-Initialize Terraform
-```bash
+- Initialize Terraform
 terraform init
-```
-Validate
-```bash
+- Validate
 terraform validate
-```
 
 <img width="2016" height="736" alt="image" src="https://github.com/user-attachments/assets/6ed8acdd-a5ff-47f1-8074-ca1d9f657f89" />
 
-Plan
-```bash
+- Plan
 terraform plan
-```
-Deploy
-```bash
+- Deploy
 terraform apply
-```
 
 <img width="2014" height="846" alt="image" src="https://github.com/user-attachments/assets/1e06b1c4-1cf9-45a8-8142-d0f37603874b" />
 
@@ -277,13 +231,10 @@ terraform apply
 ## STEP 10: Get Public IP
 
 After deployment Terraform outputs the EC2 Public IP.
-'''
 terraform output
-'''
 - Public_ip: 13.203.78.88
-```text
+
 http://13.203.78.88:3000
-```
 
 <img width="2260" height="650" alt="image" src="https://github.com/user-attachments/assets/81dc5088-d10e-4fa3-8d7e-5345931d6089" />
 
